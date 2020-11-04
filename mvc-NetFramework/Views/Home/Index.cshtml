@@ -1,0 +1,46 @@
+﻿@{
+
+    ViewBag.Title = "Home Page";
+    @section scripts {
+        <script type="text/javascript" src="~/Scripts/ajax.js"></script>
+    }
+
+}
+
+<div>
+
+    <h1>Buscar usuario SIN AJAX</h1>
+
+    @using (Html.BeginForm("BuscarUsuarioSinAjax", "Home", FormMethod.Post))
+    {
+        <input type="text" name="usuarioId" placeholder="Usuario ID">
+        <input type="submit" value="Buscar usuario">
+    }
+
+    @{
+
+        if (ViewBag.usuario != null)
+        {
+
+            <p><h3>Usuario encontrado sin AJAX</h3></p>
+            <p><b>ID: </b>@ViewBag.usuario.id</p>
+            <p><b>Email: </b>@ViewBag.usuario.email</p>
+            <p><b>Direccion: </b>@ViewBag.usuario.direccion</p>
+            <p><b>Puntos: </b>@ViewBag.usuario.puntos</p>
+
+        }
+
+    }
+
+</div>
+
+<div>
+
+    <h1>Buscar usuario CON AJAX</h1>
+
+    <input type="text" id="usuarioIdConAjax" placeholder="Usuario ID" />
+    <button id="buscarUsuario">Buscar usuario</button>
+
+    <div id="usuario"></div>
+
+</div>
